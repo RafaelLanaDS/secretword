@@ -1,0 +1,197 @@
+.game {
+    animation: slideUp 0.5s ease-out;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.game h1 {
+    font-size: clamp(2em, 5vw, 3em);
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.points {
+    text-align: right;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.points span {
+    font-weight: 700;
+    color: var(--color-accent-light);
+    background: rgba(243, 156, 18, 0.1);
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    display: inline-block;
+}
+
+.tip {
+    margin: 15px 0;
+    font-size: 1.05em;
+    color: var(--color-text-muted);
+}
+
+.tip span{
+    color: var(--color-accent-light);
+    font-weight: 600;
+}
+
+.game > p {
+    font-size: 1.1em;
+    color: var(--color-text-muted);
+    margin: 15px 0;
+}
+
+.wordCointainer{
+    margin: 2em auto;
+    padding: 2em;
+    border: 3px solid var(--color-accent-light);
+    background: rgba(243, 156, 18, 0.05);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+}
+
+.letter, .blankSquare{
+    font-size: clamp(40px, 8vw, 70px);
+    line-height: 1.4;
+    border: 2px solid var(--color-border);
+    height: 80px;
+    width: 80px;
+    text-transform: uppercase;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.letter {
+    border-color: var(--color-success);
+    background-color: rgba(46, 204, 113, 0.2);
+    color: var(--color-success);
+}
+
+.blankSquare {
+    border-color: var(--color-accent);
+}
+
+.letterContainer {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2em;
+    border-radius: var(--radius-lg);
+    margin: 1.5em 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.letterContainer p {
+    margin: 0 0 1.5em 0;
+    color: var(--color-text-muted);
+    font-size: 1.05em;
+}
+
+.letterContainer form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.letterContainer input{
+    height: 50px;
+    width: 50px;
+    min-width: 50px;
+    font-size: 1.8em;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--color-secondary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    transition: var(--transition);
+    padding: 0;
+}
+
+.letterContainer input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2);
+}
+
+.letterContainer input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.wrongLettersContainer {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5em;
+    border-radius: var(--radius-lg);
+    margin-top: 1.5em;
+    box-shadow: var(--shadow-sm);
+}
+
+.wrongLettersContainer p {
+    margin: 0 0 1em 0;
+    color: var(--color-text-muted);
+    font-size: 1.05em;
+}
+
+.wrongLettersContainer span {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-accent) 0%, #c0392b 100%);
+    color: white;
+    padding: 6px 12px;
+    margin: 4px 4px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.95em;
+    animation: popIn 0.3s ease-out;
+    box-shadow: var(--shadow-sm);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .game {
+        padding: 0 15px;
+    }
+    
+    .letter, .blankSquare {
+        height: 70px;
+        width: 70px;
+    }
+    
+    .wordCointainer {
+        padding: 1.5em 1em;
+    }
+}
