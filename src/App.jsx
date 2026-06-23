@@ -31,38 +31,53 @@ function App() {
   const [guesses, setGuesses] = useState(3)
   const [score, setScore] = useState(0)
 
+  // Memoriza a função para não recriar toda vez que o componente re-renderizar
   const pickWordAndCategory = useCallback(() => {
-    //pick a random category
-    const categories = Object.keys(words)
-    const category = categories[Math.floor(Math.random() * Object.keys(categories).length)]
 
-    //pick a random word
+    // Pega os nomes das categorias do objeto words e transforma em array
+    // ex: ["frutas", "animais", "cores"]
+    const categories = Object.keys(words)
+
+    // Sorteia uma categoria aleatória do array
+    // Math.random() gera um número entre 0 e 1
+    // Multiplica pelo tamanho do array para ter um índice válido
+    // Math.floor() remove a vírgula para virar um índice inteiro
+    const category = categories[Math.floor(Math.random() * categories.length)]
+
+    // Entra na categoria sorteada e sorteia uma palavra aleatória
     const word = words[category][Math.floor(Math.random() * words[category].length)]
 
-    return {word, category}
-  },[words])
+    // Retorna os dois valores para serem usados em startGame
+    return { word, category }
 
-  //start the secret word game 
+  }, [words]) // Só recria a função se "words" mudar
+
+
+  // Memoriza a função para poder ser usada como dependência no useEffect
   const startGame = useCallback(() => {
-    //clear all latter
+
+    // Limpa as letras certas e erradas da rodada anterior
     clearLetterStates()
 
-    // pick word and pick category
-    const {word, category} = pickWordAndCategory()
+    // Pega a palavra e categoria sorteadas pela função acima
+    const { word, category } = pickWordAndCategory()
 
-    //create an array of latters
+    // Quebra a palavra em um array de letras
+    // ex: "gato" → ["g", "a", "t", "o"]
     let wordLetters = word.split('')
 
+    // Converte todas as letras para minúsculo para comparar com o que o jogador digita
     wordLetters = wordLetters.map((l) => l.toLowerCase())
 
-
-    //fill states
+    // Salva a palavra, categoria e letras nos states
     setPickeWord(word)
     setPickeCategory(category)
     setLetters(wordLetters)
 
+    // Muda a tela para a tela do jogo
     setGameStage(stages[1].name)
-  },[pickWordAndCategory])
+
+  }, [pickWordAndCategory]) // Só recria a função se "pickWordAndCategory" mudar
 
   //process the latter input
   const verifyLatter = (letter) => {
