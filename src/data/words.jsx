@@ -5,4 +5,11 @@ export const wordsList = {
   computador: ["Mouse", "Teclado", "Monitor", "Gabinete"],
   programação: ["Linguagem", "Framework", "JavaScript", "React"],
   alimento: ["Arroz", "Feijão", "Carne", "Leite", "Ovo"],
+  animal: ["Cachorro", "Elefante", "Girafa", "Leão", "Macaco", "Pinguim", "Tigre", "Baleia"],
+  esporte: ["Futebol", "Basquete", "Natação", "Tênis", "Vôlei", "Ciclismo", "Boxe", "Judô"],
+  pais: ["Brasil", "França", "Japão", "Alemanha", "Argentina", "Portugal", "Canadá", "Austrália"],
+  profissão: ["Médico", "Professor", "Engenheiro", "Advogado", "Arquiteto", "Enfermeiro", "Piloto", "Bombeiro"],
+  cor: ["Vermelho", "Azul", "Verde", "Amarelo", "Roxo", "Laranja", "Marrom", "Turquesa"],
+  filme: ["Avatar", "Titanic", "Interestelar", "Matrix", "Gladiador", "Inception", "Parasita", "Joker"],
+  instrumento: ["Violão", "Bateria", "Teclado", "Trompete", "Violino", "Flauta", "Saxofone", "Acordeon"],
 };
