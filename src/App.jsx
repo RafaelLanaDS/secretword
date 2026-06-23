@@ -123,8 +123,11 @@ function App() {
   useEffect(() =>{
     const uniqueLetters = [...new Set(letters)]
 
+    // Não executar na montagem inicial quando ainda não há letras
+    if (uniqueLetters.length === 0) return
+
     if(guessedLetters.length === uniqueLetters.length){
-      setScore((actualScore) => actualScore += 100)
+      setScore((actualScore) => actualScore + 100)
       startGame()
     }
 
